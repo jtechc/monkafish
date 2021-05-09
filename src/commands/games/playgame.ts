@@ -5,12 +5,16 @@ import TicTacToeGame from '../../utils/tictactoe';
 import HangmanGame from '../../utils/hangman-util';
 import GameBase from '../../utils/game-base';
 import { ResultType } from '../../utils/game-result';
+import SnakeGame from '../../utils/snake-util';
+
 const ticTacToe = new TicTacToeGame();
 const hangman = new HangmanGame();
+const snake = new SnakeGame();
 
 const commandGameMap = new Map<string, GameBase>([
   [`hangman`, hangman],
   [`tictactoe`, ticTacToe],
+  [`snake`, snake],
 ]);
 const playerGameMap = new Map<string, Map<string, GameBase>>();
 
@@ -78,8 +82,8 @@ export default {
           playerGameMap.has(guildId) &&
           playerGameMap.get(guildId)!.has(userId)
         ) {
-          const Hangman = playerGameMap.get(guildId)!.get(userId)!;
-          Hangman.gameOver({ result: ResultType.FORCE_END });
+          const game = playerGameMap.get(guildId)!.get(userId)!;
+          game.gameOver({ result: ResultType.FORCE_END });
           playerGameMap.get(guildId)?.delete(userId);
         }
       }

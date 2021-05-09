@@ -10,7 +10,7 @@ export default {
   usage: '<text>',
   cooldown: 5,
   category: 'Utility',
-  callback({ message, args, client, text }) {
+  callback({ message, args }) {
     if (!args[0]) {
       message
         .reply(
