@@ -8,7 +8,7 @@ export default {
   usage: '',
   cooldown: 5,
   description: 'Fish a monkfish',
-  callback({ message, args, client, text }) {
+  callback({ message }) {
     const embed = new MessageEmbed()
       .setTitle('Fish caught!')
       .setColor('RANDOM')
