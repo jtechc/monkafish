@@ -14,7 +14,8 @@ export default {
       .setColor('RANDOM')
       .setDescription('You have caught a monkafish!')
       .setThumbnail('https://i.imgur.com/caqSfyB.png')
-      .setFooter(`Requested by: ${message.author.tag}`);
+      .setFooter(`Caught by: ${message.author.tag}`)
+      .setTimestamp();
     message.reply(embed);
   },
 } as Command;
