@@ -6,7 +6,7 @@ import weather from 'weather-js';
 
 export default {
   name: 'weather',
-  category: 'info',
+  category: 'Info',
   minArgs: 1,
   usage: '<place>',
   cooldown: 5,

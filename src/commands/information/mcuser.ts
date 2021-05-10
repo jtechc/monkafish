@@ -4,7 +4,7 @@ import mcapi from 'mcapi';
 
 export default {
   name: 'mcuser',
-  category: 'info',
+  category: 'Info',
   minArgs: 1,
   usage: '<username>',
   cooldown: 5,
