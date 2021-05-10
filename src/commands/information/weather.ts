@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
 import { Command } from '@aeroware/aeroclient/dist/types';
 import { MessageEmbed } from 'discord.js';
 import weather from 'weather-js';
 
 export default {
   name: 'weather',
-  category: 'Information',
+  category: 'info',
   minArgs: 1,
   usage: '<place>',
   cooldown: 5,
   description: 'Find the weather of a specific city',
-  async callback({ message, args, client, text }) {
+  async callback({ message, args }) {
     const city = args.slice(0).join(' ');
 
     // eslint-disable-next-line no-unused-expressions
@@ -29,10 +31,9 @@ export default {
 
           if (result.length === 0) {
             return await message.channel.send(
-              `No data was found for \`${
-                String(city).length > 1959
-                  ? String(city).substring(0, 1956) + '...'
-                  : city
+              `No data was found for \`${String(city).length > 1959
+                ? String(city).substring(0, 1956) + '...'
+                : city
               }\``
             );
           } else {

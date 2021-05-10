@@ -4,12 +4,12 @@ import mcapi from 'mcapi';
 
 export default {
   name: 'mcuser',
-  category: 'Information',
+  category: 'info',
   minArgs: 1,
   usage: '<username>',
   cooldown: 5,
   description: 'Find information on a minecraft user!',
-  async callback({ message, args, client, text }) {
+  async callback({ message, args }) {
     try {
       const uuid = await mcapi.usernameToUUID(`${args.join(' ')}`);
       const embed = new MessageEmbed()
