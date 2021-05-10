@@ -1,14 +1,13 @@
 import { EventHandler } from '@aeroware/aeroclient/dist/types';
 import { Message } from 'discord.js';
 // import guild, { interfaceGuildConfig } from '../schemas/guildSchema';
+import AeroClient from '@aeroware/aeroclient';
 
 export default {
   name: 'message',
   async callback(message: Message) {
     if (!message.author.bot)
-      console.log(
-        `${message.author.tag} => ${message.channel.id}: ${message.content}`
-      );
+      console.log(`${message.author.tag} => : ${message.content}`);
   },
 } as EventHandler;
 /* async function suggestions(message: Message, info: interfaceGuildConfig) {
