@@ -13,7 +13,8 @@ export default {
       .setTitle('Fish caught!')
       .setColor('RANDOM')
       .setDescription('You have caught a monkafish!')
-      .setThumbnail('https://i.imgur.com/caqSfyB.png');
+      .setThumbnail('https://i.imgur.com/caqSfyB.png')
+      .setFooter(`Requested by: ${message.author.tag}`);
     message.reply(embed);
   },
 } as Command;
