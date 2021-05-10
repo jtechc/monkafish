@@ -1,8 +1,8 @@
-/* eslint-disable prettier/prettier */
 import { Command } from '@aeroware/aeroclient/dist/types';
 import { MessageEmbed } from 'discord.js';
 import weather from 'weather-js';
 
+// fix this one day
 export default {
   name: 'weather',
   category: 'Info',
@@ -11,36 +11,40 @@ export default {
   cooldown: 5,
   description: 'Find the weather of a specific city',
   async callback({ message, args }) {
-    const city = args.slice(0).join(' ');
+    const city = args.join(' ');
+    const degreetype = 'F';
 
-    (() => {
-      if (!city) return message.channel.send('Please enter a city to get the weather in!')
-      weather.find({
-        search: city,
-        degreeType: 'F'
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      }, function (err: any, result: any) {
-        if (err) console.log(err)
+    await weather.find(
+      { search: city, degreeType: degreetype },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      function (err: string, result: any) {
+        if (!city) return message.channel.send('Please specify a city');
+        if (err || result === undefined || result.length === 0)
+          return message.channel.send('Unknown city.  Please try again');
 
-        if (result.length === 0) {
-          return message.channel.send(`No data was available for the location \`${(String(city).length > 1959) ? String(city).substring(0, 1956) + '...' : city}\``)
-        } else {
-          const dc = Math.round(((result[0].current.temperature - 32) * 5 / 9) * 100) / 100
-          const dc2 = Math.round(((result[0].current.feelslike - 32) * 5 / 9) * 100) / 100
-          const b4 = result[0].current.winddisplay.split('mph')
-          const a4 = Math.round(b4[0] * 1.609344) + ' kph' + b4[1]
+        const current = result[0].current;
+        const location = result[0].location;
 
-          const embed = new MessageEmbed()
-            .setColor('RANDOM')
-            .setTitle(`Weather in: ${result[0].location.name}`)
-            .setThumbnail(result[0].current.imageUrl)
-            .addField('Tempature: ', `${result[0].current.temperature}°F \n ${dc}°C`, true)
-            .addField('Feels Like: ', `${result[0].current.feelslike}°F \n ${dc2}°C`, true)
-            .addField('Humidity: ', `${result[0].current.humidity}%`, true)
-            .setDescription(`**Sky weather:** ${result[0].current.skytext} \n\n **Wind info:** ${result[0].current.winddisplay} (${a4})`)
-          return message.channel.send(embed)
-        }
-      })
-    })
+        const embed = new MessageEmbed()
+          .setAuthor(current.observationpoint)
+          .setDescription(`> ${current.skytext}`)
+          .setThumbnail(current.imageUrl)
+          .setTimestamp()
+          .setColor(0x7289da);
+
+        embed
+          .addField('Latitude', location.lat, true)
+          .addField('Longitude', location.long, true)
+          .addField('Feels Like', `${current.feelslike}° Degrees`, true)
+          .addField('Degree Type', location.degreetype, true)
+          .addField('Winds', current.winddisplay, true)
+          .addField('Humidity', `${current.humidity}%`, true)
+          .addField('Timezone', `GMT ${location.timezone}`, true)
+          .addField('Temperature', `${current.temperature}° Degrees`, true)
+          .addField('Observation Time', current.observationtime, true)
+          .setFooter(`Requested by: ${message.author.tag}`);
+        return message.channel.send(embed);
+      }
+    );
   },
 } as Command;
