@@ -28,6 +28,7 @@
     "mongoose": "^5.12.7",
     "node-fetch": "^2.6.1",
     "random-words": "^1.1.1",
+    "sourcebin": "^4.2.3",
     "sqlite3": "^5.0.2",
     "ts-node": "^9.1.1",
     "twemoji-parser": "^13.0.0",

@@ -19,8 +19,8 @@ const client = new AeroClient({
   staff: ['132631391983632384'],
   dev: {
     eval: {
-      console: true,
-      command: true,
+      console: false,
+      command: false,
     },
   },
 });
