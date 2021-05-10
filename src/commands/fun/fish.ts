@@ -1,4 +1,5 @@
 import { Command } from '@aeroware/aeroclient/dist/types';
+import { MessageEmbed } from 'discord.js';
 
 export default {
   name: 'fish',
@@ -8,6 +9,11 @@ export default {
   cooldown: 5,
   description: 'Fish a monkfish',
   callback({ message, args, client, text }) {
-    message.reply('You have caught a monkafish');
+    const embed = new MessageEmbed()
+      .setTitle('Fish caught!')
+      .setColor('RANDOM')
+      .setDescription('You have caught a monkafish!')
+      .setThumbnail('https://i.imgur.com/caqSfyB.png');
+    message.reply(embed);
   },
 } as Command;
