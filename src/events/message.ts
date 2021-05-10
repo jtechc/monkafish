@@ -1,7 +1,6 @@
 import { EventHandler } from '@aeroware/aeroclient/dist/types';
 import { Message } from 'discord.js';
 // import guild, { interfaceGuildConfig } from '../schemas/guildSchema';
-import AeroClient from '@aeroware/aeroclient';
 
 export default {
   name: 'message',

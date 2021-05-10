@@ -21,10 +21,9 @@ export default {
 
     try {
       if (custom?.id) {
-        return;
-        message.channel.send(
-          `https://cdn.discordapp.com/emojis/${custom?.id}.${
-            custom?.animated ? 'gif' : 'png'
+        return message.channel.send(
+          // eslint-disable-next-line prettier/prettier
+          `https://cdn.discordapp.com/emojis/${custom?.id}.${custom?.animated ? 'gif' : 'png'
           }`
         );
       } else {
