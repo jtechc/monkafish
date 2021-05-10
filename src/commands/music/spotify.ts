@@ -1,5 +1,5 @@
 import { Command } from '@aeroware/aeroclient/dist/types';
-import { MessageAttachment } from 'discord.js';
+import { MessageAttachment, User } from 'discord.js';
 import canvacord from 'canvacord';
 
 export default {
@@ -12,7 +12,7 @@ export default {
   async callback({ message, args }) {
     if (message.author.bot) return;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let user: any;
+    let user: User | undefined;
     if (message.mentions.users.first()) {
       user = message.mentions.users.first();
     } else if (args[0]) {
@@ -21,14 +21,15 @@ export default {
       user = message.author;
     }
     let status;
-    if (user.presense.activities.length === 1)
-      status = user.presense.activities[0];
-    else if (user.presense.activities.length > 1)
-      status = user.presense.activities[1];
+    if (user?.presence.activities.length === 1)
+      status = user.presence.activities[0];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    else if (user!.presence.activities.length > 1)
+      status = user?.presence.activities[1];
 
     if (
-      user.presense.activities.length === 0 ||
-      (status.name !== 'Spotify' && status.type !== 'LISTENING')
+      user?.presence.activities.length === 0 ||
+      (status?.name !== 'Spotify' && status?.type !== 'LISTENING')
     ) {
       return message.channel.send('This user is not listening to music!');
     }
@@ -39,7 +40,7 @@ export default {
       status.assets !== null
     ) {
       // eslint-disable-next-line prettier/prettier
-      const image = `https://i.scdn.co/image/${status.assets.largeImage.slice(8)}`,
+      const image = `https://i.scdn.co/image/${status.assets.largeImage?.slice(8)}`,
         name = status.details,
         artist = status.state,
         album = status.assets.largeText;
@@ -47,8 +48,8 @@ export default {
       const card = new canvacord.Spotify()
         .setAuthor(artist)
         .setAlbum(album)
-        .setStartTimestamp(status.timestamps.start)
-        .setEndTimestamp(status.timestamps.end)
+        .setStartTimestamp(status.timestamps?.start)
+        .setEndTimestamp(status.timestamps?.end)
         .setImage(image)
         .setTitle(name);
 
