@@ -11,7 +11,7 @@ export default {
   usage: '<emoji>',
   cooldown: 5,
   category: 'Utility',
-  async callback({ message, client, args }) {
+  async callback({ message, args }) {
     const Emoji = args[0];
     if (!Emoji) {
       message.reply('Please specify an emoji!');

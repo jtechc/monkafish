@@ -26,7 +26,7 @@ export default {
   usage: '[user]',
   cooldown: 5,
   description: 'Play a game vs someone else or vs the bot!',
-  details: 'Possible game choices: [hangman],[tictactoe]',
+  details: 'Possible game choices: [hangman],[tictactoe],[snake]',
   callback({ message, args }) {
     const gameCommand = args[0];
     if (!gameCommand)
