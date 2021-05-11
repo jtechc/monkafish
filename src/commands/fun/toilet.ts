@@ -12,7 +12,7 @@ export default {
     'Ever imagine what it would look like if your profile picture was in a toilet?',
   async callback({ message }) {
     const member = message.mentions.members?.first() || message.member;
-    const canvas = Canvas.createCanvas(800, 600);
+    const canvas = Canvas?.createCanvas(800, 600);
     const ctx = canvas.getContext('2d');
     const background = await Canvas.loadImage(
       'https://i.imgur.com/yU9fSU7.jpg'

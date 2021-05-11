@@ -10,7 +10,7 @@ export default {
   cooldown: 5,
   staffOnly: true,
   description: 'Use a terminal in discord chat!',
-  async callback({ message, args, client, text }) {
+  async callback({ message, args }) {
     if (message.author.id === '132631391983632384') {
       const msg = await message.channel.send(
         'Please wait, this may take a while'

@@ -17,7 +17,7 @@ export default {
       size: 1024,
     });
 
-    message.channel.send('Loading...');
+    message.channel.send('`Loading...`');
     try {
       const res = await fetch(
         encodeURI(
