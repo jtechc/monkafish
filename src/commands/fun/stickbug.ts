@@ -6,7 +6,7 @@ export default {
   name: 'stickbug',
   category: 'Fun',
   minArgs: 1,
-  usage: '<content>',
+  usage: '<user>',
   cooldown: 5,
   description: 'Get stickbugged lol',
   async callback({ message }) {

@@ -1,5 +1,4 @@
 import { Command } from '@aeroware/aeroclient/dist/types';
-import colour from 'cdcolours';
 import process from 'child_process';
 
 export default {

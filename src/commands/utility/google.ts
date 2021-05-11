@@ -14,7 +14,7 @@ export default {
   usage: '<search>',
   cooldown: 5,
   description: 'Search google for something',
-  async callback({ message, args, client, text }) {
+  async callback({ message, args }) {
     const imageQuery = args.join(' ');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const imageResults: any = await google.scrape(imageQuery, 1);
