@@ -4,6 +4,7 @@ import { Command } from '@aeroware/aeroclient/dist/types';
 
 export default {
   name: 'presentation',
+  aliases: ['present'],
   category: 'utility',
   minArgs: 1,
   usage: '<message>',
