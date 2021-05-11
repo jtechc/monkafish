@@ -6,15 +6,24 @@ import HangmanGame from '../../utils/hangman-util';
 import GameBase from '../../utils/game-base';
 import { ResultType } from '../../utils/game-result';
 import SnakeGame from '../../utils/snake-util';
+import MinesweeperGame from '../../utils/minesweeper-util';
+import Connect4Game from '../../utils/connect4-util';
+import ChessGame from '../../utils/chess-util';
 
 const ticTacToe = new TicTacToeGame();
 const hangman = new HangmanGame();
 const snake = new SnakeGame();
+const minesweeper = new MinesweeperGame();
+const connect4 = new Connect4Game();
+const chess = new ChessGame();
 
 const commandGameMap = new Map<string, GameBase>([
   [`hangman`, hangman],
   [`tictactoe`, ticTacToe],
   [`snake`, snake],
+  [`minesweeper`, minesweeper],
+  [`connect4`, connect4],
+  [`chess`, chess],
 ]);
 const playerGameMap = new Map<string, Map<string, GameBase>>();
 
@@ -26,7 +35,8 @@ export default {
   usage: '[user]',
   cooldown: 5,
   description: 'Play a game vs someone else or vs the bot!',
-  details: 'Possible game choices: [hangman],[tictactoe],[snake]',
+  details:
+    'Possible game choices: [hangman],[tictactoe],[snake],[minesweeper],[connect4],[chess]',
   callback({ message, args }) {
     const gameCommand = args[0];
     if (!gameCommand)
