@@ -10,7 +10,7 @@ export default {
   minArgs: 1,
   usage: '<emoji>',
   cooldown: 5,
-  category: 'Utility',
+  category: 'utility',
   async callback({ message, args }) {
     const Emoji = args[0];
     if (!Emoji) {

@@ -3,7 +3,7 @@ import { MessageEmbed } from 'discord.js';
 
 export default {
   name: 'ping',
-  category: 'Utility',
+  category: 'utility',
   description: 'Find out what the bot latency is.',
   aliases: ['latency'],
   async callback({ message, client }) {

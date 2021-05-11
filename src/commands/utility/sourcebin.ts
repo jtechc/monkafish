@@ -4,7 +4,7 @@ import { Command } from '@aeroware/aeroclient/dist/types';
 
 export default {
   name: 'sourcebin',
-  category: 'Utility',
+  category: 'utility',
   minArgs: 1,
   usage: '<code>',
   cooldown: 5,

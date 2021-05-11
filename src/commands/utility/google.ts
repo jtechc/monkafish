@@ -9,7 +9,7 @@ const google = new Scraper({
 
 export default {
   name: 'google',
-  category: 'Utility',
+  category: 'utility',
   minArgs: 1,
   usage: '<search>',
   cooldown: 5,

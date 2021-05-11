@@ -9,7 +9,7 @@ export default {
   permissions: ['MANAGE_MESSAGES'],
   usage: '<text>',
   cooldown: 5,
-  category: 'Utility',
+  category: 'utility',
   callback({ message, args }) {
     if (!args[0]) {
       message
