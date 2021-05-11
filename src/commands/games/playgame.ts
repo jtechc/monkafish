@@ -29,7 +29,7 @@ const playerGameMap = new Map<string, Map<string, GameBase>>();
 
 export default {
   name: 'playgame',
-  aliases: ['play'],
+  aliases: ['pg'],
   category: 'Games',
   minArgs: 0,
   usage: '[user]',
