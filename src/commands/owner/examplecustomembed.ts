@@ -3,7 +3,7 @@ import CustomEmbed from '../../utils/CustomEmbed';
 
 export default {
   name: 'examplecustomembed',
-  category: 'Staff',
+  category: 'Owner',
   minArgs: 0,
   usage: '',
   cooldown: 5,

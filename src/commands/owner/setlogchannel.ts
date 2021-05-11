@@ -4,7 +4,7 @@ import logSchema from '../../schemas/logSchema';
 
 export default {
   name: 'setlogchannel',
-  category: 'Staff',
+  category: 'Owner',
   minArgs: 1,
   usage: '<channel>',
   cooldown: 5,
